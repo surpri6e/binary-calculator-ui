@@ -1,0 +1,7 @@
+x64/
+.vs/
+osn/
+osn.sln
+osn.vcxproj
+osn.vcxproj.filters
+osn.vcxproj.user

@@ -72,6 +72,92 @@ std::string Utils::from16to2(const std::string& number) {
 	return result;
 }
 
+std::string Utils::from2to16(std::string number) {
+	std::string result;
+
+	if (number.length() % 4 != 0) {
+		Casting::castNumberToSize(number, number.length() + (4 - number.length() % 4));
+	}
+
+	std::string tetrad = "";
+	for (std::size_t i = 0; i < number.length(); i++) {
+		tetrad += number[i];
+
+		if (tetrad.length() % 4 == 0) {
+			if (tetrad == "0000") {
+				result.push_back('0');
+			}
+
+			if (tetrad == "0001") {
+				result.push_back('1');
+			}
+
+			if (tetrad == "0010") {
+				result.push_back('2');
+			}
+
+			if (tetrad == "0011") {
+				result.push_back('3');
+			}
+
+			if (tetrad == "0100") {
+				result.push_back('4');
+			}
+
+			if (tetrad == "0101") {
+				result.push_back('5');
+			}
+
+			if (tetrad == "0110") {
+				result.push_back('6');
+			}
+
+			if (tetrad == "0111") {
+				result.push_back('7');
+			}
+
+			if (tetrad == "1000") {
+				result.push_back('8');
+			}
+
+			if (tetrad == "1001") {
+				result.push_back('9');
+			}
+
+			if (tetrad == "1010") {
+				result.push_back('A');
+			}
+
+			if (tetrad == "1011") {
+				result.push_back('B');
+			}
+
+			if (tetrad == "1100") {
+				result.push_back('C');
+			}
+
+			if (tetrad == "1101") {
+				result.push_back('D');
+			}
+
+			if (tetrad == "1110") {
+				result.push_back('E');
+			}
+
+			if (tetrad == "1111") {
+				result.push_back('F');
+			}
+
+			tetrad = "";
+		}
+		else {
+			continue;
+		}
+	}
+
+	return result;
+}
+
 std::string Utils::returnWhatIsBigger(std::string firstNumber, std::string secondNumber) {
 	if (firstNumber == secondNumber) {
 		return "";

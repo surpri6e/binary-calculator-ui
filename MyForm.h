@@ -10,7 +10,6 @@
 #include "Casting.hpp"
 
 namespace osn {
-
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
@@ -18,24 +17,15 @@ namespace osn {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
-	/// <summary>
-	/// Сводка для MyForm
-	/// </summary>
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
 	public:
 		MyForm(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: добавьте код конструктора
-			//
 		}
 
 	protected:
-		/// <summary>
-		/// Освободить все используемые ресурсы.
-		/// </summary>
 		~MyForm()
 		{
 			if (components)
@@ -45,7 +35,6 @@ namespace osn {
 		}
 	private: System::Windows::Forms::Label^ lbl1;
 	private: System::Windows::Forms::TextBox^ firstNumberInput;
-	protected:
 
 
 	private: System::Windows::Forms::Label^ lbl2;
@@ -60,30 +49,12 @@ namespace osn {
 	private: System::Windows::Forms::TextBox^ resultInput;
 	private: System::Windows::Forms::Label^ firstError;
 	private: System::Windows::Forms::Label^ secondError;
-
-
-
-
-
-
-
-
-
-	protected:
-
-	protected:
+	private: System::Windows::Forms::LinkLabel^ help;
 
 	private:
-		/// <summary>
-		/// Обязательная переменная конструктора.
-		/// </summary>
 		System::ComponentModel::Container ^components;
 
 #pragma region Windows Form Designer generated code
-		/// <summary>
-		/// Требуемый метод для поддержки конструктора — не изменяйте 
-		/// содержимое этого метода с помощью редактора кода.
-		/// </summary>
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
@@ -99,6 +70,7 @@ namespace osn {
 			this->resultInput = (gcnew System::Windows::Forms::TextBox());
 			this->firstError = (gcnew System::Windows::Forms::Label());
 			this->secondError = (gcnew System::Windows::Forms::Label());
+			this->help = (gcnew System::Windows::Forms::LinkLabel());
 			this->SuspendLayout();
 			// 
 			// lbl1
@@ -150,7 +122,7 @@ namespace osn {
 			this->sumBtn->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->sumBtn->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->sumBtn->Location = System::Drawing::Point(17, 342);
+			this->sumBtn->Location = System::Drawing::Point(17, 318);
 			this->sumBtn->Name = L"sumBtn";
 			this->sumBtn->Size = System::Drawing::Size(100, 100);
 			this->sumBtn->TabIndex = 4;
@@ -165,7 +137,7 @@ namespace osn {
 			this->minBtn->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->minBtn->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->minBtn->Location = System::Drawing::Point(123, 342);
+			this->minBtn->Location = System::Drawing::Point(123, 318);
 			this->minBtn->Name = L"minBtn";
 			this->minBtn->Size = System::Drawing::Size(100, 100);
 			this->minBtn->TabIndex = 5;
@@ -180,7 +152,7 @@ namespace osn {
 			this->mulBtn->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->mulBtn->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->mulBtn->Location = System::Drawing::Point(229, 342);
+			this->mulBtn->Location = System::Drawing::Point(229, 318);
 			this->mulBtn->Name = L"mulBtn";
 			this->mulBtn->Size = System::Drawing::Size(100, 100);
 			this->mulBtn->TabIndex = 6;
@@ -195,7 +167,7 @@ namespace osn {
 			this->divBtn->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->divBtn->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->divBtn->Location = System::Drawing::Point(335, 342);
+			this->divBtn->Location = System::Drawing::Point(335, 318);
 			this->divBtn->Name = L"divBtn";
 			this->divBtn->Size = System::Drawing::Size(100, 100);
 			this->divBtn->TabIndex = 7;
@@ -250,12 +222,27 @@ namespace osn {
 			this->secondError->Text = L"Неправильно задано число в 16-ой СЧ!!!";
 			this->secondError->Visible = false;
 			// 
+			// help
+			// 
+			this->help->AutoSize = true;
+			this->help->Font = (gcnew System::Drawing::Font(L"Times New Roman", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->help->Location = System::Drawing::Point(17, 421);
+			this->help->Name = L"help";
+			this->help->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
+			this->help->Size = System::Drawing::Size(46, 14);
+			this->help->TabIndex = 13;
+			this->help->TabStop = true;
+			this->help->Text = L"Справка";
+			this->help->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &MyForm::helpClick);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::White;
 			this->ClientSize = System::Drawing::Size(453, 454);
+			this->Controls->Add(this->help);
 			this->Controls->Add(this->secondError);
 			this->Controls->Add(this->firstError);
 			this->Controls->Add(this->resultInput);
@@ -289,7 +276,7 @@ private: System::Void sumBtnClick(System::Object^ sender, System::EventArgs^ e) 
 
 	if (isCanSum) {
 		auto result = Operations::plus(firstNumber, Utils::from16to2(secondNumber));
-		resultInput->Text = gcnew String(result.c_str());
+		resultInput->Text = gcnew String(Utils::from2to16(result).c_str());
 	} else {
 		if (!Utils::isCorrect2(firstNumber)) {
 			firstError->Visible = true;
@@ -312,7 +299,7 @@ private: System::Void minBtnClick(System::Object^ sender, System::EventArgs^ e) 
 
 	if (isCanMin) {
 		auto result = Operations::minus(firstNumber, Utils::from16to2(secondNumber));
-		resultInput->Text = gcnew String(result.c_str());
+		resultInput->Text = gcnew String(Utils::from2to16(result).c_str());
 	}
 	else {
 		if (!Utils::isCorrect2(firstNumber)) {
@@ -336,7 +323,7 @@ private: System::Void mulBtnClick(System::Object^ sender, System::EventArgs^ e) 
 
 	if (isCanMul) {
 		auto result = Operations::multiply(firstNumber, Utils::from16to2(secondNumber));
-		resultInput->Text = gcnew String(result.c_str());
+		resultInput->Text = gcnew String(Utils::from2to16(result).c_str());
 	}
 	else {
 		if (!Utils::isCorrect2(firstNumber)) {
@@ -360,7 +347,15 @@ private: System::Void divBtnClick(System::Object^ sender, System::EventArgs^ e) 
 
 	if (isCanDiv) {
 		auto result = Operations::divide(firstNumber, Utils::from16to2(secondNumber));
-		resultInput->Text = gcnew String(result.c_str());
+		auto resultString = std::get<0>(result);
+		auto resultError = std::get<1>(result);
+
+		if (resultString == "") {
+			resultInput->Text = gcnew String(resultError.c_str());
+		}
+		else {
+			resultInput->Text = gcnew String(Utils::from2to16(resultString).c_str());
+		}
 	}
 	else {
 		if (!Utils::isCorrect2(firstNumber)) {
@@ -373,5 +368,8 @@ private: System::Void divBtnClick(System::Object^ sender, System::EventArgs^ e) 
 	}
 }
 
-};
+private: System::Void helpClick(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
+	System::Diagnostics::Process::Start("S:/projects/c++/osn/help.html");
+}
+	};	
 }

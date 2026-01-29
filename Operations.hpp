@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <tuple>
 
 #include "Casting.hpp"
 #include "Utils.hpp"
@@ -10,5 +11,5 @@ public:
 	static std::string plus(std::string firstNumber, std::string secondNumber);
 	static std::string multiply(std::string firstNumber, std::string secondNumber);
 	static std::string minus(std::string firstNumber, std::string secondNumber);
-	static std::string divide(std::string firstNumber, std::string secondNumber);
+	static std::tuple<std::string, std::string> divide(std::string firstNumber, std::string secondNumber);
 };

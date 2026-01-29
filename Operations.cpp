@@ -144,8 +144,9 @@ std::string Operations::minus(std::string firstNumber, std::string secondNumber)
     return Casting::deletePrimaryZeros(Utils::reverse(result));
 }
 
-std::string Operations::divide(std::string firstNumber, std::string secondNumber) {
+std::tuple<std::string, std::string> Operations::divide(std::string firstNumber, std::string secondNumber) {
     std::string result;
+    std::string error;
 
     auto firstNumberCopy = firstNumber;
     auto secondNumberCopy = secondNumber;
@@ -165,8 +166,16 @@ std::string Operations::divide(std::string firstNumber, std::string secondNumber
         dividend = secondNumber;
         divider = firstNumber;
     }
-    else if (biggerNumber == "") {
-        return "1";
+
+    divider = Casting::deletePrimaryZeros(divider);
+    
+    if (divider == "0000" || divider == "0") {
+        error = "Error 1 | You can't do it";
+        return make_tuple("", error);
+    }
+
+    if (biggerNumber == "") {
+        return std::make_tuple("1", "");
     }
 
     std::string subDividend;
@@ -189,5 +198,5 @@ std::string Operations::divide(std::string firstNumber, std::string secondNumber
         }
     }
 
-    return Casting::deletePrimaryZeros(result);
+    return std::make_tuple(Casting::deletePrimaryZeros(result), error);
 }

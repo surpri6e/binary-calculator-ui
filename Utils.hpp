@@ -8,6 +8,7 @@
 class Utils {
 public:
 	static std::string from16to2(const std::string& number);
+	static std::string from2to16(std::string number);
 	static std::string returnWhatIsBigger(std::string firstNumber, std::string secondNumber);
 
 	static std::string reverse(const std::string& str);
